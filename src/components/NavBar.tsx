@@ -1,9 +1,34 @@
+import { useSearchParams } from "react-router-dom"
+import { useForm } from "../hooks/useForm"
 import { types } from "../services/types"
 import { Img, Nav, NavBarContainer, Favorites, Filter, Input, Logo, Search, FilterPokemon, Select } from "../styledComponents/NavBar"
 
 const NavBar = () => {
 
+    const [ searchParamas , setSearchParamas ] = useSearchParams()
+
+
     const [ pokemonTypes , loading ] = types()
+
+    const [ inputs , handleFilter] = useForm({
+        name : String,
+        type : String
+    })
+
+    const { name , type } = inputs
+
+    const handleUseFilter = () => {
+        console.log(inputs)
+        if(name.length > 1 ){
+            searchParamas.set("name", name ) 
+            setSearchParamas(searchParamas)
+        }
+        if(type.length > 1 ){
+            searchParamas.set("type", type ) 
+            setSearchParamas(searchParamas)
+        }
+    }
+
 
     return (
         <NavBarContainer>
@@ -13,15 +38,15 @@ const NavBar = () => {
                 </Logo>
                 <Filter>
                     <FilterPokemon>
-                        <Input type="text" name="" id="" placeholder="Ingrese Pokemon"/>
-                        <Search>🔎</Search>
+                        <Input type="text" name="name" value={name} id="" placeholder="Ingrese Pokemon" onChange={handleFilter}/>
+                        <Search onClick={handleUseFilter}>🔎</Search>
                     </FilterPokemon>
-                    <Select name="" id="">
+                    <Select name="type" id="" value={type} onChange={handleFilter}>
                         <option disabled selected value=''>Select an option</option>
                         {loading
                         ? <></>
                         : pokemonTypes.map(item => (
-                            <option key={item.name} value={item.url}>{item.name}</option>)
+                            <option key={item.name} value={item.name}>{item.name}</option>)
                         )}
                     </Select>
                 </Filter>
