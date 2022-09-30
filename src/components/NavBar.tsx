@@ -18,7 +18,6 @@ const NavBar = () => {
     const { name , type } = inputs
 
     const handleUseFilter = () => {
-        console.log(inputs)
         if(name.length > 1 ){
             searchParamas.set("name", name ) 
             setSearchParamas(searchParamas)
@@ -38,11 +37,10 @@ const NavBar = () => {
                 </Logo>
                 <Filter>
                     <FilterPokemon>
-                        <Input type="text" name="name" value={name} id="" placeholder="Ingrese Pokemon" onChange={handleFilter}/>
+                        <Input type="text" name="name" value={name} placeholder="Ingrese Pokemon" onChange={handleFilter}/>
                         <Search onClick={handleUseFilter}>🔎</Search>
                     </FilterPokemon>
                     <Select name="type" id="" value={type} onChange={handleFilter}>
-                        <option disabled selected value=''>Select an option</option>
                         {loading
                         ? <></>
                         : pokemonTypes.map(item => (

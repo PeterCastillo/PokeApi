@@ -7,12 +7,10 @@ export const getData = (url:string) => {
 
     const fetchAPI = async() => {
         try {
-            console.log("fetch")
             const res = await fetch(url)
             const info = await res.json()
             setData(info)
             setLoading(false)
-            console.log('fetch')
         } catch (error) {
             console.log(error)
         }

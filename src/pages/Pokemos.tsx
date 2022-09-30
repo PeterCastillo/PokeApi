@@ -1,6 +1,7 @@
 import { useEffect, useState , } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { getPokemons } from '../services/pokemons'
+import Pokemon from '../components/Pokemon';
+import { getPokemons } from '../services/getPokemons'
 
 
 const Pokemons = () => {
@@ -10,7 +11,6 @@ const Pokemons = () => {
     const [ page , setPage ] = useState(1)
 
     const { pokemons  } = getPokemons(page)
-
 
     useEffect(()=> {
         let page  = parseInt(searchParams.get("page"))
@@ -30,17 +30,22 @@ const Pokemons = () => {
         setPage( page - 1)
     }
 
-
     return (
-        <div>, {page}
+        <div>
          <button onClick={handleNextPage}>ADELANTE</button>
          <button onClick={handleLastPage}>ATRAS</button>
          {pokemons.length}
             <div>
-                {pokemons.length<1
+                {pokemons.length < 1
                 ?<></>
-                : pokemons.map(item => (
-                    <h1>{item.name}</h1>
+                : pokemons.filter(item =>{
+                    let pokename = searchParams.get("name")
+                    if(!pokename) return true;
+                    let poke = item.name.toLowerCase();
+                    return poke.startsWith(pokename.toLowerCase());
+                })
+                .map(item => (
+                    <Pokemon pokemon={item} />
                 ))}
             </div>
         </div>

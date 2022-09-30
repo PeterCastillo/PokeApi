@@ -10,6 +10,7 @@ export const useForm = (initialState) => {
             ...old,
             [ name ] : value 
         }))
+        console.log(inputs)
     }
 
     return[ inputs , handleFilter ]
