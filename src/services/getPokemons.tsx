@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import { getData } from "../hooks/getData"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { pokemonToFetch } from "../redux/actions/pokemonActions";
 
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20&offset='
 
 export const getPokemons = (page) => {
 
+    const state = useSelector( state => state)
     const dispach = useDispatch()
-
-    const [ pokemons , setPokemos ] = useState([])
+    const { pokemons } = state.pokemon
 
     const [ offset , setOffset ] = useState(0)
 
@@ -20,12 +20,12 @@ export const getPokemons = (page) => {
     } , [page])
     
     const adaptPokemons = async (data) => {
-        const pokemons = data.map(async (pokemon) => {
+        const pokemons = data.map(async(pokemon) => {
             const res = await fetch(pokemon.url)
-            const data = await res.json()
-            return { data }})
+            const data  = await res.json()
+            return  data 
+        })
         dispach(pokemonToFetch(await Promise.all(pokemons)))
-        setPokemos(data)
     }
 
     useEffect(()=> {
@@ -34,7 +34,7 @@ export const getPokemons = (page) => {
         } 
     }, [data])
 
-    return { pokemons  } 
+    return { pokemons }
 
 }
 

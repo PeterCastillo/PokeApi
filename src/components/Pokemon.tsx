@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react"
-import { getData } from "../hooks/getData"
-
 const Pokemon = ( { pokemon }) => {
 
-    const [ pokeInfo , setPokeInfo ] = useState({})
-
-    const { data , loading } = getData(pokemon.url)
-
-    useEffect(()=>{
-        if(!loading){
-            setPokeInfo(data)
-        }
-    }, [data])
+    const { name } = pokemon
+    console.log(pokemon)
 
     return (
-        <span>{loading? <></>: <span>{pokeInfo.name}</span> }<br/></span>
+        <div>
+            {name} 
+            h
+            {pokemon.types.map(item =>(
+                <h1>{item.type.name}</h1>
+            ))}
+        </div>
     )
 }
 

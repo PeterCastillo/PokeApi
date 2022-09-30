@@ -10,7 +10,7 @@ const Pokemons = () => {
 
     const [ page , setPage ] = useState(1)
 
-    const { pokemons  } = getPokemons(page)
+    const { pokemons } = getPokemons(page);
 
     useEffect(()=> {
         let page  = parseInt(searchParams.get("page"))
@@ -43,6 +43,13 @@ const Pokemons = () => {
                     if(!pokename) return true;
                     let poke = item.name.toLowerCase();
                     return poke.startsWith(pokename.toLowerCase());
+                }).filter(item => {
+                    let poketype = searchParams.get("type")
+                    if(!poketype) return true
+                    let types = item.types.map(item => (
+                        item.type.name
+                    ))
+                    return types.includes(poketype)
                 })
                 .map(item => (
                     <Pokemon pokemon={item} />
