@@ -17,16 +17,12 @@ export const getPokemons = (page) => {
     } , [page])
     
     const fetchPokemons = async (offset) => {
-        const data = await fetchAPI(apiUrl + offset)
-        setData(data)
+        const { results } = await fetchAPI(apiUrl + offset)
+        setData(results)
     }
     
     const setData = async (data) => {
-        const pokemons = data.map(async(pokemon) => {
-            const res = await fetch(pokemon.url)
-            const data  = await res.json()
-            return  data 
-        })
+        const pokemons = data.map((pokemon) => fetchAPI(pokemon.url))
         dispach(pokemonToFetch(await Promise.all(pokemons)))
     }
 

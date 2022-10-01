@@ -3,8 +3,8 @@ export const useFetch = () => {
     const fetchAPI = async(url) => {
         try {
             const res = await fetch(url)
-            const { results } = await res.json()
-            return  results
+            const data = await res.json()
+            return  data
         } catch (error) {
             console.log(error)
         }

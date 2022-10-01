@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const NavBarContainer = styled.div`
@@ -86,16 +87,6 @@ export const Search = styled.span`
     border-radius: 0rem 0.5rem 0.5rem 0rem;
 `
 
-export const FavoritesPokemons = styled.div`
-    position: absolute;
-    width: 13rem;
-    max-height: 15rem;
-    background-color: aqua;
-    right: 1rem;
-    top: 4.5rem;
-    z-index: 50;
-    overflow-x: auto;
-`
 export const PokeFavImg = styled.div`
     height: 5rem;
     width: 5rem;
@@ -111,6 +102,25 @@ export const Fav = styled.span`
     font-size: 2rem;
     cursor: pointer;
 `
+export const Img = styled.img`
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+`
+
+
+
+
+
+
+export const FavoritesPokemons = styled.div`
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 1rem;
+    top: 4.5rem;
+    z-index: 50;
+`
 
 export const PokeFav = styled.div`
     width: 100%;
@@ -119,26 +129,23 @@ export const PokeFav = styled.div`
     align-items: center;
     justify-content: space-around
 `
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const Img = styled.img`
-    height: 100%;
+export const PokesFav = styled.div`
     width: 100%;
-    object-fit: contain;
+    max-height: 15rem;
+    background-color: aqua;
+    overflow-x: auto;
+`
+
+export const CheckPokeFavs = styled(Link)`
+    width: 100%;
+    border: solid 5px antiquewhite;
+    background-color: antiquewhite;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.8rem;
+    font-size: 18px;
+    text-align: center;
+    &:hover{
+        background-color: red;
+    }
 `

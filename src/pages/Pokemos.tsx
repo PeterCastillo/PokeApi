@@ -1,10 +1,10 @@
 import { useEffect, useState , } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import Pokemon from '../components/Pokemon';
+import { useFilter } from '../hooks/useFilter';
 import PokesContainer from '../layout/PokesContainer';
 import { getPokemons } from '../services/getPokemons'
-
-
+import { Btn, BtnsContainer } from '../styledComponents/Pokemon';
 
 const Pokemons = () => {
 
@@ -13,6 +13,8 @@ const Pokemons = () => {
     const [ page , setPage ] = useState(1)
 
     const { pokemons , favoritos } = getPokemons(page);
+
+    const { pokefiltered } = useFilter(pokemons)
 
     useEffect(()=> {
         let page  = parseInt(searchParams.get("page"))
@@ -26,30 +28,18 @@ const Pokemons = () => {
 
     const handlePage = (next) => {
         next ? setPage( page + 1) : setPage( page - 1)
-        
     }
 
     return (
         <div>
-         <button onClick={()=>handlePage(true)}>ADELANTE</button>
-         <button onClick={()=>handlePage(false)}>ATRAS</button>
+            <BtnsContainer>
+                <Btn onClick={()=>handlePage(false)}>Prev</Btn>
+                <Btn onClick={()=>handlePage(true)}>Next</Btn>
+            </BtnsContainer>
             <PokesContainer>
                 {pokemons.length < 1
                 ?<></>
-                : pokemons.filter(item =>{
-                    let pokename = searchParams.get("name")
-                    if(!pokename) return true;
-                    let poke = item.name.toLowerCase();
-                    return poke.startsWith(pokename.toLowerCase());
-                }).filter(item => {
-                    let poketype = searchParams.get("type")
-                    if(!poketype) return true
-                    let types = item.types.map(item => (
-                        item.type.name
-                    ))
-                    return types.includes(poketype)
-                })
-                .map(item => {
+                : pokefiltered.map(item => {
                     const pokeFav =  favoritos.find(poke => poke.id == item.id)
                     return pokeFav ? <Pokemon pokemon={item} state ={true}/> : <Pokemon pokemon={item}/>
                 })}

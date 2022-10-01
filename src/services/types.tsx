@@ -1,25 +1,27 @@
 import { useEffect, useState } from 'react'
-import { getData } from '../hooks/getData'
+import { useFetch } from '../hooks/useFetch'
 import { PokemonTypes } from '../models/types'
 
 const apiUrl = 'https://pokeapi.co/api/v2/type'
-
 
 export const types = () => {
 
     const [ pokemonTypes , setTypes ] = useState<Array<PokemonTypes>>([])
 
-    const { data , loading } =  getData(apiUrl)
+    const { fetchAPI } = useFetch();
     
     const adaptTypes = (data:Array<PokemonTypes>) => {
         setTypes(data)
     }
 
-    useEffect(()=> {
-        if(!loading){
-            adaptTypes(data.results)
-        } 
-    }, [data])
+    const fetchTypes = async() => {
+        const { results } = await fetchAPI(apiUrl)
+        adaptTypes(results)
+    }
 
-    return [ pokemonTypes , loading  ] 
+    useEffect(()=> {
+        fetchTypes()
+    }, [])
+
+    return [ pokemonTypes ] 
 }

@@ -49,7 +49,6 @@ export const Type = styled.span`
     border-radius: 0.5rem;
 `
 
-
 export const  PokemonImg = styled.div`
     height: 8rem;
     position: absolute;
@@ -61,3 +60,35 @@ export const PokeImg = styled.img`
     width: 100%;
     height: 100%;
 `
+
+export const BtnsContainer = styled.div`
+    position: fixed;
+    max-width: 400px;
+    height: 2rem;
+    bottom: 2rem;
+    z-index: 100;
+    left: 0%;
+    right: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0rem 1rem;
+    display: flex;
+    gap: 0.1rem;
+`
+export const Btn = styled.button`
+    font-weight: bold;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    padding-right: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: green;
+    transition: all 150ms ease;
+    letter-spacing: 0.1rem;
+    &:hover {
+        background-color: #b5fcb5;
+    }
+` 
