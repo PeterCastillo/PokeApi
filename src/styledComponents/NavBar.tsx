@@ -59,7 +59,7 @@ export const Select = styled.select`
     height: 2.3rem;
     flex: 9rem 1 0;
     border: none;
-    border: solid 2px #cacaca ;
+    border: solid 2px #cacaca;
     outline: none;
     border-radius: 0.5rem;
     padding-left: 0.5rem;
@@ -94,25 +94,7 @@ export const FavoritesPokemons = styled.div`
     right: 1rem;
     top: 4.5rem;
     z-index: 50;
-    &::before {
-        content: '';
-        width: 12;
-        height: 12;
-        border-left: 12px solid transparent;
-        border-right: 12px solid transparent;
-        border-bottom: 12px solid white;
-        top: -12px;
-        left: 173px;
-        position: absolute;
-    }
     overflow-x: auto;
-`
-export const PokeFav = styled.div`
-    width: 100%;
-    display: flex;
-    height: 5rem;
-    align-items: center;
-    justify-content: space-around
 `
 export const PokeFavImg = styled.div`
     height: 5rem;
@@ -129,6 +111,16 @@ export const Fav = styled.span`
     font-size: 2rem;
     cursor: pointer;
 `
+
+export const PokeFav = styled.div`
+    width: 100%;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    justify-content: space-around
+`
+
+
 
 
 

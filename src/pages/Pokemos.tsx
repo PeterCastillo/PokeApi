@@ -1,8 +1,9 @@
 import { useEffect, useState , } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import Pokemon from '../components/Pokemon';
+import PokesContainer from '../layout/PokesContainer';
 import { getPokemons } from '../services/getPokemons'
-import { Container } from '../styledComponents/Pokemon';
+
 
 
 const Pokemons = () => {
@@ -23,20 +24,16 @@ const Pokemons = () => {
         setSearchParams(searchParams)
     }, [ page ])
 
-    const handleNextPage = () => {
-        setPage( page + 1)
-    }
-
-    const handleLastPage = () => {
-        setPage( page - 1)
+    const handlePage = (next) => {
+        next ? setPage( page + 1) : setPage( page - 1)
+        
     }
 
     return (
         <div>
-         <button onClick={handleNextPage}>ADELANTE</button>
-         <button onClick={handleLastPage}>ATRAS</button>
-         {pokemons.length}
-            <Container>
+         <button onClick={()=>handlePage(true)}>ADELANTE</button>
+         <button onClick={()=>handlePage(false)}>ATRAS</button>
+            <PokesContainer>
                 {pokemons.length < 1
                 ?<></>
                 : pokemons.filter(item =>{
@@ -56,7 +53,7 @@ const Pokemons = () => {
                     const pokeFav =  favoritos.find(poke => poke.id == item.id)
                     return pokeFav ? <Pokemon pokemon={item} state ={true}/> : <Pokemon pokemon={item}/>
                 })}
-            </Container>
+            </PokesContainer>
         </div>
     )
 }

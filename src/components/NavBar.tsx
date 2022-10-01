@@ -64,7 +64,6 @@ const NavBar = () => {
                     ))}
                 </FavoritesPokemons> 
                 :<></>}
-
             </Nav>
         </NavBarContainer>
     )

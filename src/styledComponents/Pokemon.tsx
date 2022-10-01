@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { favorite } from '../redux/actions/pokemonActions'
 
 export const Pokemon = styled.div`
     position: relative;
@@ -61,14 +60,4 @@ export const  PokemonImg = styled.div`
 export const PokeImg = styled.img`
     width: 100%;
     height: 100%;
-`
-
-
-export const Container = styled.div`
-    max-width: 1000px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(14.5rem,1fr));
-    gap: 1.5rem;
-    padding: 1rem;
 `
