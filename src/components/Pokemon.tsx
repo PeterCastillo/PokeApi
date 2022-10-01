@@ -1,16 +1,29 @@
-const Pokemon = ( { pokemon }) => {
+import { useDispatch } from "react-redux"
+import { favorite } from "../redux/actions/pokemonActions"
+import { PokeFavorite, PokeId, PokeImg, Pokemon as PokemonStyle, PokemonImg, PokemonInfo, PokeName, PokeType, Type} from "../styledComponents/Pokemon"
 
-    const { name } = pokemon
-    console.log(pokemon)
+const Pokemon = ( { pokemon  , state = false }) => {
+
+    const { name , id , types , sprites } = pokemon
+
+    const dispach = useDispatch()
 
     return (
-        <div>
-            {name} 
-            h
-            {pokemon.types.map(item =>(
-                <h1>{item.type.name}</h1>
-            ))}
-        </div>
+        <PokemonStyle>
+            <PokeFavorite favorite={state} onClick={()=>dispach(favorite(pokemon))}>❤️</PokeFavorite>
+            <PokemonImg>
+                <PokeImg src={sprites.front_default} alt={name}/>
+            </PokemonImg>
+            <PokemonInfo>
+                <PokeName>{name.toUpperCase()}</PokeName>
+                <PokeId><b>#</b>{id}</PokeId>
+                <PokeType>
+                    {types.map(item =>(
+                        <Type>{item.type.name}</Type>
+                    ))}
+                </PokeType>
+            </PokemonInfo>
+        </PokemonStyle>
     )
 }
 

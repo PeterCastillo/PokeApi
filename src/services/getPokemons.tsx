@@ -3,13 +3,13 @@ import { getData } from "../hooks/getData"
 import { useDispatch, useSelector } from "react-redux"
 import { pokemonToFetch } from "../redux/actions/pokemonActions";
 
-const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20&offset='
+const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=42&offset='
 
 export const getPokemons = (page) => {
 
     const state = useSelector( state => state)
     const dispach = useDispatch()
-    const { pokemons } = state.pokemon
+    const { pokemons , favoritos } = state.pokemon
 
     const [ offset , setOffset ] = useState(0)
 
@@ -34,7 +34,7 @@ export const getPokemons = (page) => {
         } 
     }, [data])
 
-    return { pokemons }
+    return { pokemons , favoritos }
 
 }
 

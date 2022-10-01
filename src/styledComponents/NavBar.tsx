@@ -13,6 +13,7 @@ export const Nav = styled.div`
     position: relative;
     padding: 0.5rem 1rem 0.5rem 1rem;
     flex-wrap: wrap;
+    position: relative;
 `
 
 export const Favorites = styled.span`
@@ -85,9 +86,49 @@ export const Search = styled.span`
     border-radius: 0rem 0.5rem 0.5rem 0rem;
 `
 
-
-
-
+export const FavoritesPokemons = styled.div`
+    position: absolute;
+    width: 13rem;
+    max-height: 15rem;
+    background-color: aqua;
+    right: 1rem;
+    top: 4.5rem;
+    z-index: 50;
+    &::before {
+        content: '';
+        width: 12;
+        height: 12;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 12px solid white;
+        top: -12px;
+        left: 173px;
+        position: absolute;
+    }
+    overflow-x: auto;
+`
+export const PokeFav = styled.div`
+    width: 100%;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    justify-content: space-around
+`
+export const PokeFavImg = styled.div`
+    height: 5rem;
+    width: 5rem;
+`
+export const PokeFavInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 16px;
+`
+export const Fav = styled.span`
+    font-size: 2rem;
+    cursor: pointer;
+`
 
 
 

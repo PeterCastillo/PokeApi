@@ -1,12 +1,19 @@
+import { useState } from "react"
+import {  useSelector } from "react-redux"
 import { useSearchParams } from "react-router-dom"
 import { useForm } from "../hooks/useForm"
 import { types } from "../services/types"
-import { Img, Nav, NavBarContainer, Favorites, Filter, Input, Logo, Search, FilterPokemon, Select } from "../styledComponents/NavBar"
+import { Img, Nav, NavBarContainer, Favorites, Filter, Input, Logo, Search, FilterPokemon, Select, FavoritesPokemons } from "../styledComponents/NavBar"
+import PokemonFav from "./PokemonFav"
 
 const NavBar = () => {
 
+    const state = useSelector( state => state)
+    const { pokemons , favoritos } = state.pokemon
+
     const [ searchParamas , setSearchParamas ] = useSearchParams()
 
+    const [ modalFavoritos , setModalFavoritos ] = useState(false)
 
     const [ pokemonTypes , loading ] = types()
 
@@ -28,7 +35,6 @@ const NavBar = () => {
         }
     }
 
-
     return (
         <NavBarContainer>
             <Nav>
@@ -48,9 +54,17 @@ const NavBar = () => {
                         )}
                     </Select>
                 </Filter>
-                <Favorites>
+                <Favorites onClick={()=>setModalFavoritos(!modalFavoritos)}>
                     ❤️
                 </Favorites>
+                {modalFavoritos ?
+                <FavoritesPokemons> 
+                    {favoritos.map(pokemon =>(
+                        <PokemonFav pokemonFav={pokemon}/>
+                    ))}
+                </FavoritesPokemons> 
+                :<></>}
+
             </Nav>
         </NavBarContainer>
     )
