@@ -38,7 +38,7 @@ const NavBar = () => {
     return (
         <NavBarContainer>
             <Nav>
-                <Logo>
+                <Logo to={'/'}>
                     <Img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="POKEAPI" />
                 </Logo>
                 <Filter>

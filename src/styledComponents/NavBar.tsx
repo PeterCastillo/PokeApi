@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const NavBarContainer = styled.div`
-    background-color: red;
+    background-color: #ff5e5e;
     /* position: fixed;
     width: 100vw; */
 `
@@ -25,7 +25,7 @@ export const Favorites = styled.span`
     top: 1.75rem;
 `
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
     height: 5rem;
     width: 8rem;
     align-self: center;

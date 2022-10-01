@@ -20,12 +20,12 @@ export const useFilter = (pokemons) => {
             ))
             return types.includes(poketype)
          })
-        setPokefiltered(filtrados)
+         setPokefiltered(filtrados)
     }
 
     useEffect(()=>{
         filter(pokemons)
-    }, [searchParams , [] ])
-
+    }, [ pokemons , searchParams] )
+    
     return  { pokefiltered } 
 }

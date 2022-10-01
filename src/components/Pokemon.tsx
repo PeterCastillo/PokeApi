@@ -12,14 +12,14 @@ const Pokemon = ( { pokemon  , state = false }) => {
         <PokemonStyle>
             <PokeFavorite favorite={state} onClick={()=>dispach(favorite(pokemon))}>❤️</PokeFavorite>
             <PokemonImg>
-                <PokeImg src={sprites.front_default} alt={name}/>
+                <PokeImg src={sprites.other.dream_world.front_default} alt={name}/>
             </PokemonImg>
-            <PokemonInfo>
+            <PokemonInfo type={types[0].type.name}>
                 <PokeName to={`/pokemon/${name}`}>{name.toUpperCase()}</PokeName>
                 <PokeId><b>#</b>{id}</PokeId>
                 <PokeType>
                     {types.map(item =>(
-                        <Type>{item.type.name}</Type>
+                        <Type type={item.type.name}>{item.type.name}</Type>
                     ))}
                 </PokeType>
             </PokemonInfo>

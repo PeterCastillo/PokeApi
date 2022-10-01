@@ -21,18 +21,20 @@ export const PokeFavorite = styled.span`
 export const PokemonInfo = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: red;
     height: 8rem;
-    padding: 0.5rem;
+    padding: 0.8rem;
     width: 100%;
     justify-content: space-around;
     border-radius: 1rem;
+    color: white;
+    ${({ type }) => handleColorType(type)}
 `
 
 export const PokeName = styled(Link)`
     font-size: 1.3rem;
     font-weight: bold;
     text-decoration: none;
+    color: white;
 `
 export const PokeId = styled.span`
     font-weight: bold;
@@ -44,16 +46,20 @@ export const PokeType = styled.div`
     align-items: center;
 `
 export const Type = styled.span`
-    background-color: aqua;
-    padding: 0.3rem;
+    padding: 0.4rem;
     border-radius: 0.5rem;
+    font-weight: bold;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+    ${({ type }) => handleColorType(type)}
 `
 
 export const  PokemonImg = styled.div`
-    height: 8rem;
+    height: 7rem;
     position: absolute;
-    right: -0.5rem;
-    top: 0rem;
+    right: 0.5rem;
+    top: 0.5rem;
 `
 
 export const PokeImg = styled.img`
@@ -64,7 +70,7 @@ export const PokeImg = styled.img`
 export const BtnsContainer = styled.div`
     position: fixed;
     max-width: 400px;
-    height: 2rem;
+    height: 2.3rem;
     bottom: 2rem;
     z-index: 100;
     left: 0%;
@@ -80,15 +86,83 @@ export const Btn = styled.button`
     width: 50%;
     height: 100%;
     text-align: center;
-    padding-right: 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
     border: none;
     color: white;
-    background-color: green;
+    font-size: 18px;
+    background-color: #1da71d;
     transition: all 150ms ease;
     letter-spacing: 0.1rem;
     &:hover {
         background-color: #b5fcb5;
     }
 ` 
+
+const handleColorType = type =>{
+    switch(type){
+        case('normal'):{
+            return 'background-color:#b9b9b9 '
+        }
+        case('fighting'):{
+            return 'background-color: #8f4747'
+        }
+        case('flying'):{
+            return 'background-color: #809ab8'
+        }
+        case('poison'):{
+            return 'background-color: #9c599c'
+        }
+        case('ground'):{
+            return 'background-color: #726767'
+        }
+        case('rock'):{
+            return 'background-color: #3d3c3c'
+        }
+        case('bug'):{
+            return 'background-color: #52f152'
+        }
+        case('ghost'):{
+            return 'background-color: #5c3e68'
+        }
+        case('steel'):{
+            return 'background-color: #6b6b6b'
+        }
+        case('fire'):{
+            return 'background-color: #ff5e5e'
+        }
+        case('water'):{
+            return 'background-color: #8ed2fd'
+        }
+        case('grass'):{
+            return 'background-color: #64c264'
+        }
+        case('electric'):{
+            return 'background-color: #f8f867'
+        }
+        case('psychic'):{
+            return 'background-color: #f74c69'
+        }
+        case('ice'):{
+            return 'background-color: #98ecda'
+        }
+        case('dragon'):{
+            return 'background-color: #9bacc4'
+        }
+        case('dark'):{
+            return 'background-color: #616161'
+        }
+        case('fairy'):{
+            return 'background-color: #ed94ff'
+        }
+        case('unknown'):{
+            return 'background-color: '
+        }
+        case('shadow'):{
+            return 'background-color: #BE9AD3'
+        }
+        default : {
+            return 'background-color: red'
+        }
+    }
+}
