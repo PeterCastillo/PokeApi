@@ -16,7 +16,7 @@ export const getPokemons = (page) => {
     const { data , loading } = getData(apiUrl+offset)
 
     useEffect(()=>{
-        setOffset(20 * (page - 1))
+        setOffset(42 * (page - 1))
     } , [page])
     
     const adaptPokemons = async (data) => {

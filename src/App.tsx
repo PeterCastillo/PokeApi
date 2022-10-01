@@ -1,11 +1,11 @@
+import { Outlet } from "react-router-dom"
 import NavBar from "./components/NavBar"
-import Pokemons from "./pages/Pokemos"
 
 function App() {
   return (
       <>
         <NavBar/>
-        <Pokemons/>
+        <Outlet/>
       </>
   )
 }

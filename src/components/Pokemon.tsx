@@ -15,7 +15,7 @@ const Pokemon = ( { pokemon  , state = false }) => {
                 <PokeImg src={sprites.front_default} alt={name}/>
             </PokemonImg>
             <PokemonInfo>
-                <PokeName>{name.toUpperCase()}</PokeName>
+                <PokeName to={`/pokemon/${name}`}>{name.toUpperCase()}</PokeName>
                 <PokeId><b>#</b>{id}</PokeId>
                 <PokeType>
                     {types.map(item =>(

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { favorite } from '../redux/actions/pokemonActions'
 
@@ -29,9 +30,10 @@ export const PokemonInfo = styled.div`
     border-radius: 1rem;
 `
 
-export const PokeName = styled.span`
+export const PokeName = styled(Link)`
     font-size: 1.3rem;
     font-weight: bold;
+    text-decoration: none;
 `
 export const PokeId = styled.span`
     font-weight: bold;
