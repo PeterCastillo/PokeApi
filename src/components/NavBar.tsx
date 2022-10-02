@@ -11,29 +11,15 @@ const NavBar = () => {
     const state = useSelector( state => state)
     const { favoritos } = state.pokemon
 
-    const [ searchParamas , setSearchParamas ] = useSearchParams()
-
     const [ modalFavoritos , setModalFavoritos ] = useState(false)
 
     const [ pokemonTypes ] = types()
     
     const [ inputs , handleFilter] = useForm({
-        name : String,
         type : String
     })
 
-    const { name , type } = inputs
-
-    const handleUseFilter = () => {
-        if(name.length > 1 ){
-            searchParamas.set("name", name ) 
-            setSearchParamas(searchParamas)
-        }
-        if(type.length > 1 ){
-            searchParamas.set("type", type ) 
-            setSearchParamas(searchParamas)
-        }
-    }
+    const {  type } = inputs
 
     return (
         <NavBarContainer>
@@ -43,8 +29,8 @@ const NavBar = () => {
                 </Logo>
                 <Filter>
                     <FilterPokemon>
-                        <Input type="text" name="name" value={name} placeholder="Ingrese Pokemon" onChange={handleFilter}/>
-                        <Search onClick={handleUseFilter}>🔎</Search>
+                        <Input type="text" name="name" placeholder="Ingrese Pokemon" onChange={handleFilter}/>
+                        <Search>🔎</Search>
                     </FilterPokemon>
                     <Select name="type" id="" value={type} onChange={handleFilter}>
                         {pokemonTypes.length < 1

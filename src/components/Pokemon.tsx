@@ -15,7 +15,11 @@ const Pokemon = ( { pokemon  , state = false }) => {
                 <PokeImg src={sprites.other.dream_world.front_default} alt={name}/>
             </PokemonImg>
             <PokemonInfo type={types[0].type.name}>
-                <PokeName to={`/pokemon/${name}`}>{name.toUpperCase()}</PokeName>
+                <PokeName 
+                    to={{pathname:`/pokemon/${name}`}}
+                >
+                    {name.toUpperCase()}
+                </PokeName>
                 <PokeId><b>#</b>{id}</PokeId>
                 <PokeType>
                     {types.map(item =>(
