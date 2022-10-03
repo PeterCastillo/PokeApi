@@ -96,7 +96,7 @@ export const PokeFavInfo = styled.div`
     flex-direction: column;
     gap: 0.5rem;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
 `
 export const Fav = styled.span`
     font-size: 2rem;
@@ -108,18 +108,18 @@ export const Img = styled.img`
     object-fit: contain;
 `
 
-
-
-
-
-
 export const FavoritesPokemons = styled.div`
     position: absolute;
     display: flex;
     flex-direction: column;
     right: 1rem;
+    width: 15rem;
     top: 4.5rem;
     z-index: 50;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.18);
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.18);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.18);
 `
 
 export const PokeFav = styled.div`
@@ -127,25 +127,31 @@ export const PokeFav = styled.div`
     display: flex;
     height: 5rem;
     align-items: center;
-    justify-content: space-around
+    justify-content: space-around;
+    border-bottom: solid 2px #cacaca;
 `
 export const PokesFav = styled.div`
     width: 100%;
     max-height: 15rem;
-    background-color: aqua;
+    background-color: white;
     overflow-x: auto;
 `
 
 export const CheckPokeFavs = styled(Link)`
     width: 100%;
-    border: solid 5px antiquewhite;
-    background-color: antiquewhite;
+    border: solid 5px transparent;
+    background-color:white;
     text-decoration: none;
     font-weight: bold;
+    color: black;
     padding: 0.8rem;
     font-size: 18px;
     text-align: center;
+    border-radius: 0rem 0rem 1rem 1rem;
+    background-color: white;
+    transition: all 300ms ease;
     &:hover{
-        background-color: red;
+        background-color: #1da71d;
+        color: white;
     }
 `
