@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { pokemonToFetch } from "../redux/actions/pokemonActions";
 import { useFetch } from "../hooks/useFetch";
 
-const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=42&offset='
+const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=18&offset='
 
 export const getPokemons = (page) => {
 
@@ -13,7 +13,8 @@ export const getPokemons = (page) => {
     const { fetchAPI } = useFetch()
 
     useEffect(()=>{
-        fetchPokemons(42 * (page - 1))
+        fetchPokemons(18 * (page - 1))
+        dispach(pokemonToFetch([]))
     } , [page])
     
     const fetchPokemons = async (offset) => {

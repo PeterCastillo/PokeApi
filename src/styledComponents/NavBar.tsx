@@ -74,8 +74,9 @@ export const Input = styled.input`
     outline: none;
     border-radius: 0.5rem;
 `
-export const Search = styled.span`
+export const Search = styled(Link)`
     position: absolute;
+    text-decoration: none;
     background-color: #cacaca;
     height: 100%;
     right: 0;

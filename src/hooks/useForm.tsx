@@ -3,11 +3,11 @@ import { useSearchParams } from "react-router-dom"
 
 export const useForm = (initialState) => {
 
-    const [ searchParamas , setSearchParamas ] = useSearchParams()
+    const [ searchParams , setSearchParamas ] = useSearchParams()
 
     const [ inputs , setInputs ] = useState(initialState)
 
-    const {  type } = inputs
+    const {  type , name } = inputs
 
     const handleFilter = (e) => {
         const { name , value } = e.target; 
@@ -19,15 +19,26 @@ export const useForm = (initialState) => {
     }
 
     const handleUseFilter = () => {
-        if(type.length > 1 ){
-            searchParamas.set("type", type ) 
-            setSearchParamas(searchParamas)
+        if(type == "none"){
+            searchParams.delete("type")
+            setSearchParamas(searchParams)
+            return
         }
+        searchParams.set("type", type ) 
+        setSearchParamas(searchParams)
+    }
+    
+    const reset = () => {
+        setInputs((old)=>(
+            {
+                ...old,
+                name : ""
+            }))
     }
 
     useEffect(()=>{
         handleUseFilter();
     } , [type])
 
-    return[ inputs , handleFilter ]
+    return[ inputs , handleFilter , reset ]
 }

@@ -20,6 +20,9 @@ export const usePage = () => {
     const handlePage = (next) => {
         next ? setPage( page + 1) : setPage( page - 1)
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+        if(searchParams.has('type')){
+            searchParams.delete('type')
+        }
     }
 
     return { page , handlePage }

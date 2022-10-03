@@ -6,16 +6,25 @@ export const Pokemon = styled.div`
 `
 
 export const PokeFavorite = styled.span`
-    background-color: antiquewhite;
     position: absolute;
     right: 0%;
     font-size: 1.25rem;
     padding: 0.2rem;
     z-index: 25;
     border-radius: 0rem 1rem 0rem 1rem;
-    color: black;
+    background-color: #eee;
     filter: ${(props) =>( props.favorite ? "none" : "grayscale(100%);")};
+    animation:  ${(props) =>( props.favorite ? "favorite" : "")} 650ms ease-in-out infinite;
     cursor: pointer;
+    @keyframes favorite {
+    0% {
+        font-size: 1.25rem;
+    }
+    100% {
+        font-size: 1.40rem;
+    }
+    }
+
 `
 
 export const PokemonInfo = styled.div`
@@ -27,7 +36,7 @@ export const PokemonInfo = styled.div`
     justify-content: space-around;
     border-radius: 1rem;
     color: white;
-    ${({ type }) => handleColorType(type)}
+    ${({ type }) => handleColorType(type)};
 `
 
 export const PokeName = styled(Link)`
@@ -43,7 +52,6 @@ export const PokeType = styled.div`
     display: flex;
     gap: 0.4rem;
     font-size: 1.2rem;
-    align-items: center;
 `
 export const Type = styled.span`
     padding: 0.4rem;
@@ -58,6 +66,7 @@ export const Type = styled.span`
 export const  PokemonImg = styled.div`
     height: 7rem;
     position: absolute;
+    width: 5rem;
     right: 0.5rem;
     top: 0.5rem;
 `
@@ -166,3 +175,22 @@ const handleColorType = type =>{
         }
     }
 }
+
+export const PokemonLoader = styled.div`
+    height: 10rem;
+    border-radius: 1rem;
+    animation: progress 1.3s ease-in-out infinite;
+    background-color: #eee;
+    background-image: linear-gradient(90deg, #eee, #f5f5f5, #eee);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+
+@keyframes progress {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+    }
+`

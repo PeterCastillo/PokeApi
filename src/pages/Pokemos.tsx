@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Pokemon from '../components/Pokemon';
 import { useFilter } from '../hooks/useFilter';
 import { usePage } from '../hooks/usePage';
 import PokesContainer from '../layout/PokesContainer';
 import { getPokemons } from '../services/getPokemons'
-import { Btn, BtnsContainer } from '../styledComponents/Pokemon';
+import { Btn, BtnsContainer, PokemonLoader } from '../styledComponents/Pokemon';
 
 const Pokemons = () => {
 
@@ -13,7 +13,7 @@ const Pokemons = () => {
     const { pokemons , favoritos } = getPokemons(page);
 
     const { pokefiltered } = useFilter(pokemons)
-
+    
     return (
         <div>
             <BtnsContainer>
@@ -22,10 +22,10 @@ const Pokemons = () => {
             </BtnsContainer>
             <PokesContainer>
                 {pokefiltered.length < 1
-                ?<>hola</>
+                ? <><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/></>
                 : pokefiltered.map(item => {
                     const pokeFav =  favoritos.find(poke => poke.id == item.id)
-                    return pokeFav ? <Pokemon pokemon={item} state ={true}/> : <Pokemon pokemon={item}/>
+                    return pokeFav ? <Pokemon key={item.id} pokemon={item} state ={true}/> : <Pokemon key={item.id}  pokemon={item}/>
                 })}
             </PokesContainer>
         </div>

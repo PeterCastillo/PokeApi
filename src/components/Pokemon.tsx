@@ -23,7 +23,7 @@ const Pokemon = ( { pokemon  , state = false }) => {
                 <PokeId><b>#</b>{id}</PokeId>
                 <PokeType>
                     {types.map(item =>(
-                        <Type type={item.type.name}>{item.type.name}</Type>
+                        <Type key={item.type.name} type={item.type.name}>{item.type.name}</Type>
                     ))}
                 </PokeType>
             </PokemonInfo>

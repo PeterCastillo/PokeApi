@@ -6,7 +6,7 @@ export const getPokemonDetails = () => {
 
     let params = useParams();
 
-    const [ pokemonDetails , setPokemonDetails ] = useState()
+    const [ pokemonDetails , setPokemonDetails ] = useState({})
     const { fetchAPI } = useFetch()
 
     const getPokemon = async() => {
@@ -19,8 +19,9 @@ export const getPokemonDetails = () => {
     }
 
     useEffect(()=> {
+        setPokemonDetails({})
         getPokemon()
-    } , [])
+    } , [params.nombre])
 
     return { pokemonDetails }
 

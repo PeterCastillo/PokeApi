@@ -6,7 +6,7 @@ export const useFetch = () => {
             const data = await res.json()
             return  data
         } catch (error) {
-            console.log(error)
+            return "error"
         }
     }
     return { fetchAPI }
