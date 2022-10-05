@@ -7,7 +7,7 @@ const Pokemon = ( { pokemon  , state = false }) => {
     const { name , id , types , sprites } = pokemon
 
     const dispach = useDispatch()
-
+    
     return (
         <PokemonStyle>
             <PokeFavorite favorite={state} onClick={()=>dispach(favorite(pokemon))}>❤️</PokeFavorite>
