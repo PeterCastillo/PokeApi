@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { PokeFavoriteStyleProps, PokeInfoStyle } from '../models/props'
 
 export const Pokemon = styled.div`
     position: relative;
 `
-
-export const PokeFavorite = styled.span`
+export const PokeFavorite = styled.span<PokeFavoriteStyleProps>`
     position: absolute;
     right: 0%;
     font-size: 1.25rem;
@@ -27,7 +27,7 @@ export const PokeFavorite = styled.span`
 
 `
 
-export const PokemonInfo = styled.div`
+export const PokemonInfo = styled.div<PokeInfoStyle>`
     display: flex;
     flex-direction: column;
     height: 8rem;
@@ -53,7 +53,7 @@ export const PokeType = styled.div`
     gap: 0.4rem;
     font-size: 1.2rem;
 `
-export const Type = styled.span`
+export const Type = styled.span<PokeInfoStyle>`
     padding: 0.4rem;
     border-radius: 0.5rem;
     font-weight: bold;
@@ -108,7 +108,7 @@ export const Btn = styled.button`
     }
 ` 
 
-const handleColorType = type =>{
+const handleColorType = (type:string) =>{
     switch(type){
         case('normal'):{
             return 'background-color:#b9b9b9 '

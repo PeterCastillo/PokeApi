@@ -30,7 +30,7 @@ const Pokemons = () => {
                     <PokemonLoader/><PokemonLoader/><PokemonLoader/>
                  </>
                 :<>{pokefiltered.map(item =>{
-                    const pokeFav: IPokemon =  favoritos.find(poke => poke.id == item.id)
+                    const pokeFav: IPokemon | undefined  =  favoritos.find(poke => poke.id == item.id)
                     return pokeFav 
                     ?<Pokemon key={item.id} pokemon={item} state ={true}/> 
                     :<Pokemon key={item.id}  pokemon={item}/>})}

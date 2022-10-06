@@ -9,14 +9,14 @@ export const pokemonsInitialState:PokemonRedux = {
 
 interface PK {
     type: 'POKEMOS',
-    payload:  Array<Pokemon>
+    payload:  Array<Pokemon> | []
 }
 interface P {
     type: 'FAVORITE_POKEMON',
     payload: Pokemon 
 }
-
-export function pokemonReducer( state = pokemonsInitialState , action ):PokemonRedux {
+ 
+export function pokemonReducer( state = pokemonsInitialState , action: PK | P ):PokemonRedux {
     switch(action.type){
         case(POKEMONS):{
             return  {

@@ -17,3 +17,11 @@ export interface PropsProgressBar {
     value: number,
     max: number
 }
+
+export interface PokeFavoriteStyleProps {
+    favorite?: boolean
+}
+
+export interface PokeInfoStyle {
+    type : string
+}
