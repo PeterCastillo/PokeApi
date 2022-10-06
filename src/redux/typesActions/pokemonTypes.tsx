@@ -1,2 +1,2 @@
-export const POKEMOS_TO_FETCH = 'POKEMOS_TO_FETCH '
+export const POKEMONS = 'POKEMONS'
 export const FAVORITE_POKEMON = 'FAVORITE_POKEMON'

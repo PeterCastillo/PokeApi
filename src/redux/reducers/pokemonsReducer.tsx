@@ -1,13 +1,24 @@
-import { FAVORITE_POKEMON, POKEMOS_TO_FETCH } from "../typesActions/pokemonTypes";
+import { Pokemon } from "../../models/pokemon";
+import { PokemonRedux } from "../../models/pokemonRedux";
+import { FAVORITE_POKEMON, POKEMONS } from "../typesActions/pokemonTypes";
 
-export const pokemonsInitialState = {
+export const pokemonsInitialState:PokemonRedux = {
     pokemons: [],
     favoritos: []
 }
 
-export function pokemonReducer( state = pokemonsInitialState , action ){
+interface PK {
+    type: 'POKEMOS',
+    payload:  Array<Pokemon>
+}
+interface P {
+    type: 'FAVORITE_POKEMON',
+    payload: Pokemon 
+}
+
+export function pokemonReducer( state = pokemonsInitialState , action ):PokemonRedux {
     switch(action.type){
-        case(POKEMOS_TO_FETCH):{
+        case(POKEMONS):{
             return  {
                 ...state,
                 pokemons:action.payload

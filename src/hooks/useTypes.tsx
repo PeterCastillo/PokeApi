@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { RootState } from "../redux/reducers/reducer"
 
 export const useTypes = () => {
     const [ pokemonTypes , setPokemonTypes ] = useState<Array<string>>([])
 
-    const state = useSelector(state => state)
+    const state = useSelector((state:RootState) => state)
     const { pokemons } = state.pokemon
 
     const adaptTypes = () => {

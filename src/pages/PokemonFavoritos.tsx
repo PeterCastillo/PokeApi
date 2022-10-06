@@ -3,10 +3,11 @@ import PokesContainer from "../layout/PokesContainer"
 import  Pokemon  from "../components/Pokemon"
 import { useFilter } from "../hooks/useFilter"
 import ErrorPokemon from "../components/ErrorPokemon"
+import { RootState } from "../redux/reducers/reducer"
 
 const PokemonFavoritos = () => {
 
-    const state = useSelector( state => state)
+    const state = useSelector( (state: RootState) => state)
     const { favoritos } = state.pokemon
     const { pokefiltered } = useFilter(favoritos)
 

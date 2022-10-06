@@ -3,7 +3,7 @@ import { PropsPokemon } from "../models/props"
 import { favorite } from "../redux/actions/pokemonActions"
 import { Fav, Img, PokeFav, PokeFavImg, PokeFavInfo } from "../styledComponents/NavBar"
 
-const PokemonFav = ({ pokemon }:PropsPokemon):JSX.Element => {
+const PokemonFav = ({ pokemon }:PropsPokemon) => {
 
     const { name , id , sprites } = pokemon
 

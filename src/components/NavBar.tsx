@@ -1,13 +1,14 @@
 import { useState } from "react"
-import {  useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
 import { useTypes } from "../hooks/useTypes"
+import { RootState } from "../redux/reducers/reducer"
 import { Img, Nav, NavBarContainer, Favorites, Filter, Input, Logo, Search, FilterPokemon, Select, FavoritesPokemons, PokesFav, CheckPokeFavs } from "../styledComponents/NavBar"
 import PokemonFav from "./PokemonFav"
 
 const NavBar = () => {
 
-    const state = useSelector( state => state)
+    const state = useSelector( (state: RootState) => state)
     const { favoritos } = state.pokemon
 
     const [ modalFavoritos , setModalFavoritos ] = useState<Boolean>(false)
