@@ -20,7 +20,7 @@ export const useForm = (initialState:Form):[ Form , React.ChangeEventHandler , R
     }
 
     const handleUseFilter = () => {
-        if(type == "none"){
+        if(type == ""){
             searchParams.delete("type")
             setSearchParamas(searchParams)
             return

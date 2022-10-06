@@ -13,8 +13,17 @@ export const usePage = () => {
     }, [])
 
     useEffect(()=>{
-        searchParams.set("page", (page.toString()))
-        setSearchParams(searchParams)
+        if(page == 0) {
+            setPage(1)
+        }
+        if(page == 1 && searchParams.has('page')){
+            searchParams.delete('page')
+            setSearchParams(searchParams)
+        }
+        if(page > 1 ){
+            searchParams.set("page", (page.toString()))
+            setSearchParams(searchParams)
+        }
     }, [ page ])
 
     const handlePage = (next:boolean) => {

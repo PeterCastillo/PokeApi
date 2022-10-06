@@ -34,8 +34,8 @@ const NavBar = () => {
                         <Search to={ `/pokemon/${name}`} onClick={reset}>🔎</Search>
                     </FilterPokemon>
                     <Select name="type" value={type} onChange={handleFilter}> 
-                        <option value="" selected disabled hidden>Choose type</option>
-                        <option value="none" >none</option>
+                        <option selected disabled hidden>Choose type</option>
+                        <option value="" >none</option>
                         {pokemonTypes.length < 1
                         ? <option value="">...</option>
                         : pokemonTypes.map(item => (

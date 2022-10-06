@@ -14,7 +14,7 @@ export interface PropsPokesContainer {
 }
 
 export interface PropsProgressBar {
-    value: number,
+    value: string,
     max: number
 }
 

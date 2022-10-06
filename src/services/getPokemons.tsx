@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { pokemonsToShow } from "../redux/actions/pokemonActions";
 import { useFetch } from "../hooks/useFetch";
 import { RootState } from "../redux/reducers/reducer";
+import { Pokemon, Type } from "../models/pokemon";
 
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=18&offset='
 
@@ -20,7 +21,7 @@ export const getPokemons = (page:number) => {
     
     const fetchPokemons = async (offset:number) => {
         const { results } = await fetchAPI(apiUrl + offset)
-        const pokemons = await results.map((pokemon) => fetchAPI(pokemon.url))
+        const pokemons = await results.map((pokemon:Type) => fetchAPI(pokemon.url))
         dispach(pokemonsToShow(await Promise.all(pokemons)))
     }
 
