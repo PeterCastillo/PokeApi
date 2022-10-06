@@ -1,7 +1,8 @@
+import { PropsErrorPokemon } from "../models/props"
 import { Img } from "../styledComponents/NavBar"
 import { PokeDetailsContainer, PokeImgError, PokeInfoError, PokemonDetailsError } from "../styledComponents/PokemonDetails"
 
-const ErrorPokemon = ({type}) => {
+const ErrorPokemon = ({type}:PropsErrorPokemon) => {
     return (
         <PokeDetailsContainer>
                 <PokemonDetailsError>

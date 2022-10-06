@@ -1,6 +1,7 @@
+import { PropsPokesContainer } from "../models/props"
 import Container from "../styledComponents/Container"
 
-const PokesContainer = ({ children }) => {
+const PokesContainer = ({ children }:PropsPokesContainer) => {
 
     return(
         <Container>

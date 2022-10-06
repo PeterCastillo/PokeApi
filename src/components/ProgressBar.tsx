@@ -1,4 +1,6 @@
-const ProgressBar = ({ value , max }) => {
+import { PropsProgressBar } from "../models/props"
+
+const ProgressBar = ({ value , max }: PropsProgressBar) => {
 
     return (
         <>

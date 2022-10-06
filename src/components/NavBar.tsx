@@ -10,13 +10,13 @@ const NavBar = () => {
     const state = useSelector( state => state)
     const { favoritos } = state.pokemon
 
-    const [ modalFavoritos , setModalFavoritos ] = useState(false)
+    const [ modalFavoritos , setModalFavoritos ] = useState<Boolean>(false)
 
     const { pokemonTypes } = useTypes() 
     
     const [ inputs , handleFilter , reset ] = useForm({
         name: "",
-        type : ""
+        type: ""
     })
 
     const {  type , name } = inputs
@@ -31,13 +31,10 @@ const NavBar = () => {
                     <FilterPokemon>
                         <Input type="text" name="name" value={name} placeholder="Ingrese Pokemon" onChange={handleFilter}/>
                         <Search to={ `/pokemon/${name}`} onClick={reset}>🔎</Search>
-                        {/* {name.length
-                        ?<Search to={ `/pokemon/${name}`} onClick={reset}>🔎</Search>
-                        :<Search to={``}>🔎</Search>} */}
                     </FilterPokemon>
-                    <Select name="type" id="" value={type} onChange={handleFilter}> 
+                    <Select name="type" value={type} onChange={handleFilter}> 
                         <option value="" selected disabled hidden>Choose type</option>
-                        <option >none</option>
+                        <option value="none" >none</option>
                         {pokemonTypes.length < 1
                         ? <option value="">...</option>
                         : pokemonTypes.map(item => (
@@ -51,7 +48,7 @@ const NavBar = () => {
                         <FavoritesPokemons> 
                             <PokesFav>
                                 {favoritos.map(pokemon =>(
-                                    <PokemonFav pokemonFav={pokemon}/>
+                                    <PokemonFav key={pokemon.id} pokemon={pokemon}/>
                                 ))}
                             </PokesFav>
                         <CheckPokeFavs to={'/pokemones/favoritos'}>Ver favoritos</CheckPokeFavs>

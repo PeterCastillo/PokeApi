@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
 import Pokemon from '../components/Pokemon';
 import { useFilter } from '../hooks/useFilter';
 import { usePage } from '../hooks/usePage';
 import PokesContainer from '../layout/PokesContainer';
+import { Pokemon as IPokemon } from '../models/pokemon';
 import { getPokemons } from '../services/getPokemons'
 import { Btn, BtnsContainer, PokemonLoader } from '../styledComponents/Pokemon';
 
@@ -22,14 +22,23 @@ const Pokemons = () => {
             </BtnsContainer>
             <PokesContainer>
                 {pokefiltered.length < 1
-                ? <><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/><PokemonLoader/></>
-                : pokefiltered.map(item => {
-                    const pokeFav =  favoritos.find(poke => poke.id == item.id)
-                    return pokeFav ? <Pokemon key={item.id} pokemon={item} state ={true}/> : <Pokemon key={item.id}  pokemon={item}/>
-                })}
+                ?<>
+                    <PokemonLoader/><PokemonLoader/><PokemonLoader/>
+                    <PokemonLoader/><PokemonLoader/><PokemonLoader/>
+                    <PokemonLoader/><PokemonLoader/><PokemonLoader/>
+                    <PokemonLoader/><PokemonLoader/><PokemonLoader/>
+                    <PokemonLoader/><PokemonLoader/><PokemonLoader/>
+                 </>
+                :<>{pokefiltered.map(item =>{
+                    const pokeFav: IPokemon =  favoritos.find(poke => poke.id == item.id)
+                    return pokeFav 
+                    ?<Pokemon key={item.id} pokemon={item} state ={true}/> 
+                    :<Pokemon key={item.id}  pokemon={item}/>})}
+                </>}
             </PokesContainer>
         </div>
     )
 }
 
 export default Pokemons
+

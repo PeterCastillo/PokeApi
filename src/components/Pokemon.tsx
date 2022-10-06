@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux"
+import { PropsPokemon } from "../models/props"
 import { favorite } from "../redux/actions/pokemonActions"
 import { PokeFavorite, PokeId, PokeImg, Pokemon as PokemonStyle, PokemonImg, PokemonInfo, PokeName, PokeType, Type} from "../styledComponents/Pokemon"
 
-const Pokemon = ( { pokemon  , state = false }) => {
+const Pokemon = ( { pokemon ,state = false }:PropsPokemon) => {
 
     const { name , id , types , sprites } = pokemon
 

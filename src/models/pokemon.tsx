@@ -38,7 +38,7 @@ interface ISpriteVariant {
     back_gray: string | null;
     back_shiny: string | null;
     back_shiny_female: string | null;
-    front_default: string | null;
+    front_default: string | undefined;
     front_female: string | null;
     front_gray: string | null;
     front_shiny: string | null;

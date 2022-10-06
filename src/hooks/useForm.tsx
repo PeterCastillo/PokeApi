@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
+import { Form, TForm } from "../models/form"
 
-export const useForm = (initialState) => {
+export const useForm = (initialState:Form):[ Form , React.ChangeEventHandler , React.MouseEventHandler ] => {
 
     const [ searchParams , setSearchParamas ] = useSearchParams()
 
-    const [ inputs , setInputs ] = useState(initialState)
+    const [ inputs , setInputs ] = useState<Form>(initialState)
 
     const {  type , name } = inputs
 
-    const handleFilter = (e) => {
+    const handleFilter = (e: TForm) => {
         const { name , value } = e.target; 
 
         setInputs((old) => ({
@@ -40,5 +41,5 @@ export const useForm = (initialState) => {
         handleUseFilter();
     } , [type])
 
-    return[ inputs , handleFilter , reset ]
+    return [ inputs , handleFilter , reset ]
 }

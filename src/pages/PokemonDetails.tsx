@@ -31,12 +31,12 @@ const PokemonsDetails = () => {
                         </Types>
                         <Abilities>
                             {abilities.map(item=>(
-                                <span>⚔️ {item.ability.name}</span>
+                                <span key={item.ability.name}>⚔️ {item.ability.name}</span>
                             ))}
                         </Abilities> 
                         <Stats>
                             {stats.map(item=>(
-                                <Stat>
+                                <Stat key={item.stat.name}>
                                     <span>{item.stat.name}</span> <ProgressBar max={100} value={(((item.base_stat*1)/255)*100).toFixed(1)} />
                                 </Stat>
                             ))}

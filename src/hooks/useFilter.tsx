@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom";
+import { Pokemon } from "../models/pokemon";
 
-export const useFilter = (pokemons) => {
+export const useFilter = (pokemons:Array<Pokemon>)=> {
 
-    const [ pokefiltered , setPokefiltered ] = useState([])
+    const [ pokefiltered , setPokefiltered ] = useState<Array<Pokemon>>([])
     let [ searchParams, setSearchParams ] = useSearchParams();
 
-    const filter = (pokes) => {
-        const filtrados = pokes.filter(item =>{
-            let pokename = searchParams.get("name")
+    const filter = (pokes:Array<Pokemon>) => {
+        const filtrados: Array<Pokemon> = pokes.filter(item =>{
+            let pokename: string | null = searchParams.get("name")
             if(!pokename) return true;
-            let poke = item.name.toLowerCase();
+            let poke:string = item.name.toLowerCase();
             return poke.startsWith(pokename.toLowerCase());
         }).filter(item => {
-            let poketype = searchParams.get("type")
+            let poketype: string | null = searchParams.get("type")
             if(!poketype) return true
             let types = item.types.map(item => (
                 item.type.name
@@ -27,5 +28,5 @@ export const useFilter = (pokemons) => {
         filter(pokemons)
     }, [ pokemons , searchParams] )
     
-    return  { pokefiltered } 
+    return { pokefiltered }   
 }

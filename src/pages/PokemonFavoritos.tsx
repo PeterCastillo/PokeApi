@@ -15,7 +15,7 @@ const PokemonFavoritos = () => {
             {
                 pokefiltered.length > 0
                 ?<PokesContainer>
-                {pokefiltered.map(item =><Pokemon pokemon={item} state={true}/>)}
+                    {pokefiltered.map(item => <Pokemon key={item.id} pokemon={item} state={true}/>)}
                 </PokesContainer>
                 :<ErrorPokemon type={"con esas caracteristicas en tus favoritos"}/>
             }

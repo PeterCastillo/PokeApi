@@ -5,11 +5,11 @@ export const usePage = () => {
 
     let [ searchParams, setSearchParams ] = useSearchParams();
 
-    const [ page , setPage ] = useState(1)
+    const [ page , setPage ] = useState<number>(1)
 
     useEffect(()=> {
-        let page  = parseInt(searchParams.get("page"))
-        if(page) setPage(page)
+        let page: string | null = searchParams.get("page")
+        if(page) setPage(parseInt(page))
     }, [])
 
     useEffect(()=>{
@@ -17,7 +17,7 @@ export const usePage = () => {
         setSearchParams(searchParams)
     }, [ page ])
 
-    const handlePage = (next) => {
+    const handlePage = (next:boolean) => {
         next ? setPage( page + 1) : setPage( page - 1)
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
         if(searchParams.has('type')){
