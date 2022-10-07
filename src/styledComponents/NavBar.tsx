@@ -87,6 +87,19 @@ export const Search = styled(Link)`
     cursor: pointer;
     border-radius: 0rem 0.5rem 0.5rem 0rem;
 `
+export const SearchUnActive= styled.div`
+    position: absolute;
+    text-decoration: none;
+    background-color: #cacaca;
+    height: 100%;
+    right: 0;
+    padding: 0rem 0.7rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+`
 
 export const PokeFavImg = styled.div`
     height: 5rem;

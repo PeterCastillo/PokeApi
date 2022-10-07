@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
 import { useTypes } from "../hooks/useTypes"
 import { RootState } from "../redux/reducers/reducer"
-import { Img, Nav, NavBarContainer, Favorites, Filter, Input, Logo, Search, FilterPokemon, Select, FavoritesPokemons, PokesFav, CheckPokeFavs } from "../styledComponents/NavBar"
+import { Img, Nav, NavBarContainer, Favorites, Filter, Input, Logo, Search, FilterPokemon, Select, FavoritesPokemons, PokesFav, CheckPokeFavs, SearchUnActive } from "../styledComponents/NavBar"
 import PokemonFav from "./PokemonFav"
 
 const NavBar = () => {
@@ -31,7 +31,9 @@ const NavBar = () => {
                 <Filter>
                     <FilterPokemon>
                         <Input type="text" name="name" value={name} placeholder="Ingrese Pokemon" onChange={handleFilter}/>
-                        <Search to={ `/pokemon/${name}`} onClick={reset}>🔎</Search>
+                        {name.trim().length > 0  
+                        ?<Search to={ `/pokemon/${name.replace(/\s/g, '')}`} onClick={reset}>🔎</Search>
+                        :<SearchUnActive>🔎</SearchUnActive>}
                     </FilterPokemon>
                     <Select name="type" value={type} onChange={handleFilter}> 
                         <option selected disabled hidden>Choose type</option>
