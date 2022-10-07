@@ -16,7 +16,7 @@ const PokemonFav = ({ pokemon }:PropsPokemon) => {
                 <span>{name}</span>
                 <span>#{id}</span>
             </PokeFavInfo>
-            <Fav onClick={()=>dispach(favorite(pokemon))}>❤️</Fav>
+            <Fav onClick={()=>dispach(favorite([pokemon]))}>❤️</Fav>
         </PokeFav>
     )
 }

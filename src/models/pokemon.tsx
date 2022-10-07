@@ -219,7 +219,7 @@ export interface Type {
 }
 
 export interface Ability {
-    ability: Array<Type>,
+    ability: Type,
     is_hidden: boolean,
     slot: number
 }

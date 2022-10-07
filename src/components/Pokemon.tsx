@@ -11,7 +11,7 @@ const Pokemon = ( { pokemon ,state = false }:PropsPokemon) => {
     
     return (
         <PokemonStyle>
-            <PokeFavorite favorite={state} onClick={()=>dispach(favorite(pokemon))}>❤️</PokeFavorite>
+            <PokeFavorite favorite={state} onClick={()=>dispach(favorite([pokemon]))}>❤️</PokeFavorite>
             <PokemonImg>
                 <PokeImg src={sprites.other.dream_world.front_default} alt={name}/>
             </PokemonImg>

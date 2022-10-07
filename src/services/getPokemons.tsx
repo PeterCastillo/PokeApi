@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { pokemonsToShow } from "../redux/actions/pokemonActions";
 import { useFetch } from "../hooks/useFetch";
 import { RootState } from "../redux/reducers/reducer";
-import { Pokemon, Type } from "../models/pokemon";
+import { Type } from "../models/pokemon";
 
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=18&offset='
 

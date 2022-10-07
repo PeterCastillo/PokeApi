@@ -7,7 +7,7 @@ export const getPokemonDetails = () => {
 
     let params = useParams();
 
-    const [ pokemonDetails , setPokemonDetails ] = useState<Pokemon | {} | string >({})
+    const [ pokemonDetails , setPokemonDetails ] = useState<Partial<Pokemon>>({})
     const { fetchAPI } = useFetch()
 
     const getPokemon = async() => {
